@@ -1,5 +1,6 @@
 package com.project.fiapnotes.entity;
 
+import com.project.fiapnotes.dto.NoteDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,7 +9,6 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "TB_FIAP_NOTE")
@@ -27,6 +27,12 @@ public class NoteEntity {
 
     @Column(name = "CREATE_DATE_NOTE", nullable = false)
     private LocalDateTime createDataNote;
+
+    public NoteEntity(NoteDto noteDto) {
+        this.textNote = noteDto.getTextNote();
+        this.priorityNote = noteDto.isPriorityNote();
+        this.createDataNote = noteDto.getCreateDataNote();
+    }
 
     @PrePersist
     public void prePersist() {
