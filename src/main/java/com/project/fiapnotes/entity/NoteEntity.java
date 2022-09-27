@@ -1,4 +1,4 @@
-package com.project.fiapnotes.models;
+package com.project.fiapnotes.entity;
 
 import lombok.*;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "TB_FIAP_NOTE")
-public class FiapNoteModel {
+public class NoteEntity {
 
     @Id
     @Column
@@ -24,6 +24,7 @@ public class FiapNoteModel {
 
     @Column(name = "PRIORITY_NOTE",nullable = false)
     private boolean priorityNote;
+
     @Column(name = "CREATE_DATE_NOTE", nullable = false)
     private LocalDateTime createDataNote;
 
