@@ -34,4 +34,8 @@ public class FiapNotesService {
     public void delete(FiapNotesModel fiapNotesModel) {
         fiapNotesRepository.delete(fiapNotesModel);
     }
+
+    public List<FiapNotesModel> getNotes() {
+        return fiapNotesRepository.findAll();
+    }
 }

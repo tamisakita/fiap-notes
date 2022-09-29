@@ -32,8 +32,8 @@ public class FiapNotesController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FiapNotesModel>> getNotesByText(@PathVariable String text) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.getNotesByText(text));
+    public ResponseEntity<List<FiapNotesModel>> getNotes() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getNotes());
     }
 
     @GetMapping("/{id}")
