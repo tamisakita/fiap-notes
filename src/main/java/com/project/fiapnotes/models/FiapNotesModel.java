@@ -1,5 +1,6 @@
 package com.project.fiapnotes.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class FiapNotesModel implements Serializable {
     private Boolean priority;
 
     @Column(name = "creation_date", nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime creationDate;
 
     @PrePersist
