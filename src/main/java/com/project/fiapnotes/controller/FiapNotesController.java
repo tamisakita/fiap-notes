@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/fiap-notes")
+@CrossOrigin({"http://localhost:3000", "https://viniroxo.github.io/fiap-note/", "https://viniroxo.github.io"})
 public class FiapNotesController {
 
     final FiapNotesService service;
@@ -55,8 +56,8 @@ public class FiapNotesController {
         }
 
         var fiapNotesModel = notesModelOptional.get();
-        fiapNotesModel.setPriority(fiapNotesDto.getPriority());
-        fiapNotesModel.setText(fiapNotesModel.getText());
+        fiapNotesModel.setUrgent(fiapNotesDto.getUrgent());
+        fiapNotesModel.setText(fiapNotesDto.getText());
 
         return ResponseEntity.status(HttpStatus.OK).body(service.saveNote(fiapNotesModel));
     }

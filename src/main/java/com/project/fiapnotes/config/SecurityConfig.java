@@ -44,6 +44,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/users/**").permitAll()
                 .anyRequest().authenticated()
+                .and().cors()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()
@@ -52,6 +53,9 @@ public class SecurityConfig {
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable()
                 .formLogin().disable();
+
+        http.cors();
+
         return http.build();
     }
 

@@ -50,6 +50,20 @@ public class SwaggerUiWebMvcConfigurer implements WebMvcConfigurer {
        registry
                .addMapping("/v2/api-docs.*")
                .allowedOrigins("http://editor.swagger.io");
+
+//       registry
+//               .addMapping("/**");
+
+//       registry
+//               .addMapping("/**")
+//               .allowedOrigins("http://localhost:3000")
+//               .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+//
+//       registry
+//               .addMapping("/**")
+//               .allowedOrigins("https://viniroxo.github.io/fiap-note/")
+//               .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+
    }
     @Bean
     public WebMvcEndpointHandlerMapping webEndpointServletHandlerMapping(WebEndpointsSupplier webEndpointsSupplier, ServletEndpointsSupplier servletEndpointsSupplier, ControllerEndpointsSupplier controllerEndpointsSupplier, EndpointMediaTypes endpointMediaTypes, CorsEndpointProperties corsProperties, WebEndpointProperties webEndpointProperties, Environment environment) {
