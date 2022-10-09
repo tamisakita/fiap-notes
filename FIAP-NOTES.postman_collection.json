@@ -1,191 +1,248 @@
 {
 	"info": {
-		"_postman_id": "b3baa8c5-11a8-4466-80a9-b34035df7c92",
+		"_postman_id": "61f6b9e3-0232-4242-a96e-17d2281a304d",
 		"name": "FIAP-NOTES",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Save Note",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2NjQ0MTAzMDMsImV4cCI6MTY2NDQxMDYwMywic3ViIjoiVGFtaSJ9.o6GuPx9PAKu44vmxiqCe9Qrj3PBVLCm--6V7ENa4muEQV5GNzvjt3X1j82IhOrTCi0qoZ6bemEOIM4Mqww_kig",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"priority\": true,\r\n  \"text\": \"segundoooo\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/fiap-notes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"fiap-notes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Note",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "string"
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"fiap\",\r\n    \"password\": \"fiap\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
+						"url": {
+							"raw": "https://fiap-notes.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"fiap-notes",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
 						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"fiap\",\r\n    \"password\": \"fiap\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fiap-notes.herokuapp.com/users/login",
+							"protocol": "https",
+							"host": [
+								"fiap-notes",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Note",
+			"item": [
+				{
+					"name": "Save Note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"urgent\": false,\r\n  \"text\": \"quarta nota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fiap-notes.herokuapp.com/fiap-notes",
+							"protocol": "https",
+							"host": [
+								"fiap-notes",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fiap-notes"
+							]
+						}
+					},
+					"response": []
 				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"priority\": false,\r\n  \"text\": \"atualizado!\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Update Note",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"urgent\": false,\r\n  \"text\": \"primeira nota atualizada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fiap-notes.herokuapp.com/fiap-notes/1",
+							"protocol": "https",
+							"host": [
+								"fiap-notes",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fiap-notes",
+								"1"
+							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Note By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fiap-notes.herokuapp.com/fiap-notes/4",
+							"protocol": "https",
+							"host": [
+								"fiap-notes",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fiap-notes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fiap-notes.herokuapp.com/fiap-notes",
+							"protocol": "https",
+							"host": [
+								"fiap-notes",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fiap-notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Note",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://fiap-notes.herokuapp.com/fiap-notes/4",
+							"protocol": "https",
+							"host": [
+								"fiap-notes",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fiap-notes",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8081/fiap-notes/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"fiap-notes",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Find Note By Id",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/fiap-notes/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"fiap-notes",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Note",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/fiap-notes/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"fiap-notes",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"password\": \"12345\",\r\n  \"username\": \"Tami\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
 					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"users"
-					]
 				}
-			},
-			"response": []
-		},
+			]
+		}
+	],
+	"variable": [
 		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"password\": \"12345\",\r\n  \"username\": \"Tami\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/users/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"users",
-						"login"
-					]
-				}
-			},
-			"response": []
+			"key": "token",
+			"value": ""
 		}
 	]
 }
